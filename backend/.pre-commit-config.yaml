@@ -1,0 +1,14 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff-format
+        name: Ruff Format
+        entry: bash -c "cd backend && uv run ruff format ."
+        language: system
+        pass_filenames: false
+
+      - id: ruff-check
+        name: Ruff Check
+        entry: bash -c "cd backend && uv run ruff check ."
+        language: system
+        pass_filenames: false
