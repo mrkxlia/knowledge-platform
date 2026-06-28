@@ -1,0 +1,24 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+
+Description: AI Knowledge Platform Backend
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 512
+    Runtime: python3.10
+
+Resources:
+  BackendFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ../../backend
+      Handler: app.main.handler
+
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
